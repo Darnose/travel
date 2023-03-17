@@ -17,7 +17,7 @@ const Registration = () => {
 		}
 	}, [emailError, passwordError])
 
-	const loginHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+	const emailHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
 		setEmail(e.target.value)
 		let valid_email = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
@@ -41,7 +41,7 @@ const Registration = () => {
 	
 	const blurHandler: React.FocusEventHandler<HTMLInputElement> = (e) => {
 		switch (e.target.name) {
-			case 'login' :
+			case 'email' :
 				setEmailDirty(true)
 				break
 			case 'password' :
@@ -57,7 +57,7 @@ const Registration = () => {
                 <h1>
 					Registration form
                 </h1>
-                <input onChange={e => loginHandler(e)}
+                <input onChange={e => emailHandler(e)}
 					   value={email.trim()} 
 					   onBlur={e => blurHandler(e)} 
 					   type="email" 
