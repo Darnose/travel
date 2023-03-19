@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const Registration = () => {
     const [email, setEmail] = useState('');
+	const [showPassword, setShowPassword] = useState(false)
 	const [password, setPassword] = useState('');
 	const [emailDirty, setEmailDirty] = useState(false);
 	const [passwordDirty, setPasswordDirty] = useState(false);
@@ -38,7 +42,11 @@ const Registration = () => {
 			setPasswordError('')
 		}
 	}
-	
+
+	const Handleshow = () => {
+		setShowPassword(!showPassword)
+	}
+
 	const blurHandler: React.FocusEventHandler<HTMLInputElement> = (e) => {
 		switch (e.target.name) {
 			case 'email' :
@@ -68,7 +76,7 @@ const Registration = () => {
                 <input onChange={e => passwordHandler(e)} 
 					   value={password.trim()} 
 					   onBlur={e => blurHandler(e)} 
-					   type="password" 
+					   type={showPassword ? 'text' : 'password'} 
 					   className='authorization__password' 
 					   placeholder='Enter password' 
 					   name='password'/>
@@ -76,6 +84,9 @@ const Registration = () => {
                 <button disabled={!formValid} type='submit' className='authorization__btn'>
                     Sign in
                 </button>
+				<button type='button' className='eye' onClick={Handleshow}>
+					{ showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}
+				</button>
             </form>
         </main>
     )
