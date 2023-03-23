@@ -1,0 +1,104 @@
+
+.error__msg {
+	color:#FB1E1E;
+	font-size: 16px;
+    font-weight: 700;
+    margin-bottom: -19px;
+    align-self: flex-end;
+}
+
+.authorization {
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 44px;
+        .authorization__btn {
+            width: 193px;
+            height: 46px;
+            background: #6BB4F8;
+            border-radius: 5px;
+            border: 2px solid transparent;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            &:hover {
+                background: transparent;
+                color: #6BB4F8;
+                transition: all 0.2s ease;
+                border: 2px solid #6BB4F8;
+            }
+            &:disabled {
+                background: #B3CBE1;
+                color: #fff;
+                border: 2px solid transparent;
+                cursor:no-drop
+            }
+        }
+        .forget__btn {
+            width: 193px;
+            height: 46px;
+            margin-left: 27px;
+            background: transparent;
+            border-radius: 5px;
+            border: 1px solid #525151;
+            font-size: 16px;
+            font-weight: 700;
+            color: #2B2A2A;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            // &:hover {
+            //     background: #525151;
+            //     color: #fff;
+            //     transition: all 0.2s ease;
+            //     border: 1px solid #525151;
+            // }
+        }
+    }
+	
+    .input__title {
+        margin-top: 37px;
+        margin-bottom: 8px;
+        font-size: 16px;
+        font-weight: 700;
+        align-self: flex-start;
+    }
+    input {
+        width: 487px;
+        height: 70px;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 16px;
+        line-height: 19px;
+        border: 2px solid #42385E;
+        padding: 26px 25px 25px 26px;
+        ::placeholder {
+            font-size: 16px;
+            color: #848484;
+            font-weight: 700;
+        }
+    }
+}
+
+.eye {
+	position: absolute;
+	top: 67.5%;
+	left: 94.5%;
+	background: transparent;
+	border: none;
+	width: 16px;
+	height: 15px;
+	font-size: 14px;
+	cursor: pointer;
+}
+

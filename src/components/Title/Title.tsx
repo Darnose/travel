@@ -1,7 +1,7 @@
 import ITitle from './interfaces/ITitle';
 import styles from './sass/Title.module.scss';
 
-function Title({ children }: ITitle) {
+const Title = ({ children }: ITitle) => {
   return (
     <h1 className={styles.title}>
       {children}

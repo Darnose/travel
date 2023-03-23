@@ -1,66 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto:wght@400;700&display=swap');
+
 * {
-	font-family: 'Poppins', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-}
-
-h1 {
-	margin-bottom: 40px;
-}
-
-.error__msg {
-	color:red;
-	font-size: 15px;
-	margin-top: -23px;
-}
-
-.authorization {
-	display: flex;
-	position: relative;
-	justify-content: center;
-	align-items: center;
-	margin-left: auto;
-	margin-right: auto;
-	width: 400px;
-	height: 100vh;
-	flex-direction: column;
-	.authorization__btn {
-		background: transparent;
-		width: 100px;
-		height: 30px;
-		font-size: 15px;
-		margin-top: 20px;
-		border-radius: 10px;
-		transition: all 0.2s ease;
-		cursor: pointer;
-		:hover {
-			background: #6e6e6e;
-			color: #f7f7f7;
-		}
-		:active {
-			box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
-		}
-	}
-}
-
-.eye {
-	position: absolute;
-	top: 53.8%;
-	left: 82%;
-	background: transparent;
-	border: none;
-	width: 16px;
-	height: 15px;
-	font-size: 14px;
-	cursor: pointer;
-}
-
-input {
-	margin-bottom: 27px;
-	width: 300px;
-	padding: 10px 17px;
-	text-align: center;
-	border-radius: 10px;
-	font-size: 16px;
 }

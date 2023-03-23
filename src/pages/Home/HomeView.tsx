@@ -4,7 +4,7 @@ import Title from '../../components/Title/Title';
 import Cards from './components/Cards';
 import styles from './sass/Home.module.scss';
 
-function HomeView() {
+const HomeView = () => {
   const { t } = useTranslation('home');
 
   return (
