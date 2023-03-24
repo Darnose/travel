@@ -2,14 +2,13 @@ import { useTranslation } from 'next-i18next';
 import { useEffect, useState } from 'react';
 import Layout from '../../layout/Layout';
 import Title from '../../components/Title/Title';
-import styles from './sass/Login.module.scss';
+import styles from '../Login/sass/Login.module.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
 
-const LoginView = () => {
-    const { t } = useTranslation('login');
+const SignInView = () => {
+    const { t } = useTranslation('signin');
     const [email, setEmail] = useState('');
 	const [showPassword, setShowPassword] = useState(false);
 	const [password, setPassword] = useState('');
@@ -81,7 +80,7 @@ const LoginView = () => {
     <Layout>
         <form action="#" className={styles.authorization}>
             <Title>
-            {t('Login to the app')}
+            {t('Sign in to the app')}
             </Title>
             <span className={styles.input__title}>
                 Email
@@ -111,13 +110,8 @@ const LoginView = () => {
             {(passwordError && passwordDirty) && <span className={styles.error__msg}>{passwordError}</span>}
             <div className={styles.buttons}>
                 <button disabled={!formValid} type='submit' className={styles.authorization__btn}>
-                    Login
+                    Sign In
                 </button>
-				<Link href={'/forgot'}>
-					<button type='button' className={styles.forget__btn}>
-						Forgot password
-					</button>
-				</Link>
             </div>
             <button type='button' className={styles.eye} onClick={Handleshow}>
                 { showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}
@@ -127,4 +121,4 @@ const LoginView = () => {
   );
 }
 
-export default LoginView;
+export default SignInView;
