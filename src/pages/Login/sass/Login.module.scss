@@ -16,10 +16,12 @@
 	margin-right: auto;
 	width: 100%;
 	height: 100%;
+    max-width: 487px;
 	flex-direction: column;
     .buttons {
         display: flex;
-        justify-content: space-between;
+        flex-wrap: wrap;
+        justify-content: center;
         margin-top: 44px;
         .authorization__btn {
             width: 193px;
@@ -29,6 +31,7 @@
             border: 2px solid transparent;
             font-size: 16px;
             font-weight: 700;
+            margin-bottom: 10px;
             color: #fff;
             transition: all 0.2s ease;
             cursor: pointer;
@@ -52,17 +55,43 @@
             background: transparent;
             border-radius: 5px;
             border: 1px solid #525151;
+            text-decoration: none;
             font-size: 16px;
             font-weight: 700;
-            color: #2B2A2A;
             transition: all 0.2s ease;
             cursor: pointer;
+            a {
+                text-decoration: none;
+                color: #2B2A2A;
+                transition: all 0.2s ease;
+            }
             // &:hover {
             //     background: #525151;
             //     color: #fff;
             //     transition: all 0.2s ease;
             //     border: 1px solid #525151;
             // }
+        }
+        .link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 37px;
+            margin-right: 37px;
+            height: 46px;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            a {
+                text-decoration: none;
+                color: #6BB4F8;
+                transition: all 0.2s ease;
+                margin-left: 5px;
+                margin-right: 5px;
+                border-bottom: 1px solid transparent;
+                &:hover {
+                    border-bottom: 1px solid #6BB4F8;
+                }
+            }
         }
     }
 	
@@ -82,7 +111,7 @@
         line-height: 19px;
         border: 2px solid #42385E;
         padding: 26px 25px 25px 26px;
-        ::placeholder {
+        &::placeholder {
             font-size: 16px;
             color: #848484;
             font-weight: 700;
@@ -92,8 +121,8 @@
 
 .eye {
 	position: absolute;
-	top: 67.5%;
-	left: 94.5%;
+	top: 273px;
+	left: 464px;
 	background: transparent;
 	border: none;
 	width: 16px;

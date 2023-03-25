@@ -113,11 +113,17 @@ const LoginView = () => {
                 <button disabled={!formValid} type='submit' className={styles.authorization__btn}>
                     Login
                 </button>
-				<Link href={'/forgot'}>
-					<button type='button' className={styles.forget__btn}>
+				<button type='button' className={styles.forget__btn}>
+					<Link href={'/forgot'}>
 						Forgot password
-					</button>
-				</Link>
+					</Link>
+				</button>
+				<span className={styles.link}>
+					Don't have an account yet?
+					<Link href={'/signup'}>
+						{t('Sign Up')}
+					</Link>
+				</span> 
             </div>
             <button type='button' className={styles.eye} onClick={Handleshow}>
                 { showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}

@@ -6,8 +6,9 @@ import styles from '../Login/sass/Login.module.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
 
-const SignInView = () => {
+const SignUpView = () => {
     const { t } = useTranslation('signin');
     const [email, setEmail] = useState('');
 	const [showPassword, setShowPassword] = useState(false);
@@ -80,7 +81,7 @@ const SignInView = () => {
     <Layout>
         <form action="#" className={styles.authorization}>
             <Title>
-            {t('Sign in to the app')}
+            {t('Sign up to the app')}
             </Title>
             <span className={styles.input__title}>
                 Email
@@ -110,8 +111,13 @@ const SignInView = () => {
             {(passwordError && passwordDirty) && <span className={styles.error__msg}>{passwordError}</span>}
             <div className={styles.buttons}>
                 <button disabled={!formValid} type='submit' className={styles.authorization__btn}>
-                    Sign In
+                    Sign Up
                 </button>
+				<span className={styles.link}>
+					<Link href={'/login'}>
+						{t('I have an account')}
+					</Link>
+				</span> 
             </div>
             <button type='button' className={styles.eye} onClick={Handleshow}>
                 { showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}
@@ -121,4 +127,4 @@ const SignInView = () => {
   );
 }
 
-export default SignInView;
+export default SignUpView;
