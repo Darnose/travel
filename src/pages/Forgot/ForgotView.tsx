@@ -1,74 +1,34 @@
 import { useTranslation } from 'next-i18next';
-import { useEffect, useState } from 'react';
 import Layout from '../../layout/Layout';
 import Title from '../../components/Title/Title';
-import styles from '../Login/sass/Login.module.scss';
+import styles from './sass/Forgot.module.scss';
+import Input from '../../components/Input/Input';
+import Button from '../../components/Button/Button';
+import button from '../../components/Button/sass/Button.module.scss'
+
+import '../../i18n/i18n'
 
 const ForgotView = () => {
-    const { t } = useTranslation('forgot');
-    const [email, setEmail] = useState('');
-	const [emailDirty, setEmailDirty] = useState(false);
-	const [emailError, setEmailError] = useState('Email cannot be empty');
-	const [formValid, setFormValid] = useState(false);
-
-	useEffect (() => {
-		if (emailError) {
-			setFormValid(false)
-		} else {
-			setFormValid(true)
-		}
-	}, [emailError])
-
-	const emailHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-		setEmail(e.target.value)
-		let valid_email = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
-
-		if (!valid_email.test(e.target.value)){
-			setEmailError('Email is not valid')
-		} else {
-			setEmailError('')
-		}
-	}
-
-	const focusHandler: React.FocusEventHandler<HTMLInputElement> = (e) => {
-		switch (e.target.name) {
-			case 'email' :
-				setEmailDirty(false)
-				break
-		}
-	}
-
-	const blurHandler: React.FocusEventHandler<HTMLInputElement> = (e) => {
-		switch (e.target.name) {
-			case 'email' :
-				setEmailDirty(true)
-				break
-		}
-	}
+    const { t } = useTranslation(['login', 'signup']);
 
   return (
     <Layout>
         <form action="#" className={styles.authorization}>
             <Title>
-            {t('Forgot password')}
+            	{t('Forgot')}
             </Title>
-            <span className={styles.input__title}>
-                Email
-            </span>
-            <input onChange={e => emailHandler(e)}
-                   value={email.trim()}
-                   onBlur={e => blurHandler(e)}
-                   onFocus={e => focusHandler(e)}
-                   type="email"
-                   className={styles.authorization__email}
-                   placeholder='Enter email...'
-                   name='email'
-                   autoComplete='off'/>
-            {(emailError && emailDirty) && <span className={styles.error__msg}>{emailError}</span>}
+            <Input
+                title={t('inputTitle1', { ns: 'signup' })}
+                type={'email'}
+                placeholder={'Enter email...'}
+                name={'email'}
+            />
             <div className={styles.buttons}>
-                <button disabled={!formValid} type='submit' className={styles.authorization__btn}>
-					Send email
-                </button>
+				<Button
+					type={'submit'}
+					text={t('sendEmail')}
+					className={button.authorization__btn}
+				/>
             </div>
         </form>
     </Layout>

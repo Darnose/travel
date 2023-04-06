@@ -1,0 +1,61 @@
+.button {
+    .authorization__btn {
+        width: 193px;
+        height: 46px;
+        background: #6BB4F8;
+        border-radius: 5px;
+        border: 2px solid transparent;
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #fff;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        &:hover {
+            background: transparent;
+            color: #6BB4F8;
+            transition: all 0.2s ease;
+            border: 2px solid #6BB4F8;
+        }
+    }
+    .forget__btn {
+        width: 193px;
+        height: 46px;
+        margin-left: 27px;
+        background: transparent;
+        border-radius: 5px;
+        border: 1px solid #525151;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 700;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+            width: 100%;
+            height: 100%;
+        }
+        // &:hover {
+        //     background: #525151;
+        //     color: #fff;
+        //     transition: all 0.2s ease;
+        //     border: 1px solid #525151;
+        // }
+    }
+    .eye {
+        position: absolute;
+        top: 273px;
+        left: 464px;
+        background: transparent;
+        border: none;
+        width: 16px;
+        height: 15px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+}

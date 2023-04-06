@@ -10,7 +10,7 @@ function Layout({ children }: ILayout) {
     <div>
       <div className={styles.container}>
         <Head>
-          <title>{t('travel')}</title>
+          <title>{t('Title')}</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main className={styles.main}>

@@ -1,0 +1,28 @@
+.input__wrap {
+    display: flex;
+    flex-direction: column;
+    .input__title {
+        margin-top: 37px;
+        margin-bottom: 8px;
+        font-size: 16px;
+        font-weight: 700;
+        align-self: flex-start;
+    }
+    input {
+        width: 487px;
+        height: 70px;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 16px;
+        line-height: 19px;
+        border: 2px solid #42385E;
+        padding: 26px 25px 25px 26px;
+        &::placeholder {
+            position: absolute;
+            font-size: 16px;
+            color: #848484;
+            font-weight: 700;
+        }
+    }
+}
+

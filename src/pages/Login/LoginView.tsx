@@ -1,133 +1,79 @@
 import { useTranslation } from 'next-i18next';
-import { useEffect, useState } from 'react';
 import Layout from '../../layout/Layout';
 import Title from '../../components/Title/Title';
 import styles from './sass/Login.module.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
-import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
+import Input from '../../components/Input/Input';
+import Button from '../../components/Button/Button';
+import button from '../../components/Button/sass/Button.module.scss'
 
-const LoginView = () => {
-    const { t } = useTranslation('login');
-    const [email, setEmail] = useState('');
-	const [showPassword, setShowPassword] = useState(false);
-	const [password, setPassword] = useState('');
-	const [emailDirty, setEmailDirty] = useState(false);
-	const [passwordDirty, setPasswordDirty] = useState(false);
-	const [emailError, setEmailError] = useState('Email cannot be empty');
-	const [passwordError, setPasswordError] = useState('Password cannot be empty');
-	const [formValid, setFormValid] = useState(false);
+import '../../i18n/i18n'
 
-	useEffect (() => {
-		if (emailError || passwordError) {
-			setFormValid(false)
-		} else {
-			setFormValid(true)
-		}
-	}, [emailError, passwordError])
-
-	const emailHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-		setEmail(e.target.value)
-		let valid_email = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
-
-		if (!valid_email.test(e.target.value)){
-			setEmailError('Email is not valid')
-		} else {
-			setEmailError('')
-		}
-	}
-
-	const passwordHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-		setPassword(e.target.value)
-		let valid_password = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/g;
-
-		if (!valid_password.test(e.target.value)){
-			setPasswordError("Password must have at least one uppercase ('A'-'Z')")
-		} else {
-			setPasswordError('')
-		}
-	}
-
-	const Handleshow = () => {
-		setShowPassword(!showPassword)
-	}
-
-	const focusHandler: React.FocusEventHandler<HTMLInputElement> = (e) => {
-		switch (e.target.name) {
-			case 'email' :
-				setEmailDirty(false)
-				break
-			case 'password' :
-				setPasswordDirty(false)
-				break
-			
-		}
-	}
-
-	const blurHandler: React.FocusEventHandler<HTMLInputElement> = (e) => {
-		switch (e.target.name) {
-			case 'email' :
-				setEmailDirty(true)
-				break
-			case 'password' :
-				setPasswordDirty(true)
-				break
-			
-		}
-	}
+const LoginView = (props: any) => {
+    const { t } = useTranslation(['login', 'signup', 'common']);
 
   return (
     <Layout>
         <form action="#" className={styles.authorization}>
             <Title>
-            {t('Login to the app')}
+            	{t('logIn')}
             </Title>
-            <span className={styles.input__title}>
-                Email
-            </span>
-            <input onChange={e => emailHandler(e)}
-                   value={email.trim()}
-                   onBlur={e => blurHandler(e)}
-                   onFocus={e => focusHandler(e)}
-                   type="email"
-                   className={styles.authorization__email}
-                   placeholder='Enter email...'
-                   name='email'
-                   autoComplete='off'/>
-            {(emailError && emailDirty) && <span className={styles.error__msg}>{emailError}</span>}
-            <span className={styles.input__title}>
-                Password
-            </span>
-            <input onChange={e => passwordHandler(e)}
-                   value={password.trim()}
-                   onBlur={e => blurHandler(e)}
-                   onFocus={e => focusHandler(e)}
-                   type={showPassword ? 'text' : 'password'}
-                   className={styles.authorization__password}
-                   placeholder='Enter password...'
-                   name='password'
-                   autoComplete='off'/>
-            {(passwordError && passwordDirty) && <span className={styles.error__msg}>{passwordError}</span>}
+            <Input
+				title={t('inputTitle1', { ns: 'signup' })}
+				onChange={e => props.emailHandler(e)}
+				value={props.email.trim()}
+				type={'email'}
+				placeholder={'Enter email...'}
+				name={'email'}
+			/>
+            {(!props.emailValid && !props.formValid) ?
+			<span className={styles.error__msg}>
+				{t('validEmail', { ns: 'signup' })}
+			</span> :
+			 null}
+            <Input
+				title={t('inputTitle2', { ns: 'signup' })}
+				onChange={e => props.passwordHandler(e)}
+				value={props.password.trim()}
+				type={props.showPassword ? 'text' : 'password'}
+				placeholder={'Enter password...'}
+				name={'password'}
+			/>
+            {(!props.passwordValid && !props.formValid) ? 
+			<span className={styles.error__msg}>
+				{t('validPassword', { ns: 'signup' })}
+			</span> : 
+			null}
+			<Button
+				type={'button'}
+				onClick={props.Handleshow}
+				text={props.showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}
+				className={button.eye}
+			/>
             <div className={styles.buttons}>
-                <button disabled={!formValid} type='submit' className={styles.authorization__btn}>
-                    Login
-                </button>
-				<button type='button' className={styles.forget__btn}>
+				<Button
+					type={'submit'}
+					onClick={e => props.validHandler(e)}
+					text={t('Log')}
+					className={button.authorization__btn}
+				/>
+				<Button
+					type={'button'}
+					text={
 					<Link href={'/forgot'}>
-						Forgot password
-					</Link>
-				</button>
+						{t('Forgot')}
+					</Link>}
+					className={button.forget__btn}
+				/>
 				<span className={styles.link}>
-					Don't have an account yet?
+					{t("dontHave")}
 					<Link href={'/signup'}>
-						{t('Sign Up')}
+						{t('SignUp', { ns: 'signup' })}
 					</Link>
-				</span> 
+				</span>
             </div>
-            <button type='button' className={styles.eye} onClick={Handleshow}>
-                { showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}
-            </button>
         </form>
     </Layout>
   );
