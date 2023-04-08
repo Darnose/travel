@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 .input__wrap {
     display: flex;
     flex-direction: column;
@@ -15,12 +17,12 @@
         border-radius: 5px;
         font-size: 16px;
         line-height: 19px;
-        border: 2px solid #42385E;
+        border: 2px solid $dark;
         padding: 26px 25px 25px 26px;
         &::placeholder {
             position: absolute;
             font-size: 16px;
-            color: #848484;
+            color: $grey;
             font-weight: 700;
         }
     }

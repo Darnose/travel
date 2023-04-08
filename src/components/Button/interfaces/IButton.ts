@@ -4,5 +4,5 @@ export default interface IButton {
     type: 'submit' | 'reset' | 'button';
     text: React.ReactNode;
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
-    className: string;
+    styleType?: string;
 }

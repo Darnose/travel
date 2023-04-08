@@ -1,6 +1,6 @@
 import React from "react"
 
-export default interface ILogin {
+export default interface ISignup {
     emailHandler: React.ChangeEventHandler<HTMLInputElement>,
     passwordHandler: React.ChangeEventHandler<HTMLInputElement>,
     showPassword: boolean,

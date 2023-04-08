@@ -2,6 +2,7 @@ import { useState } from 'react';
 import SignUpView from '../src/pages/SignUp/SignUpView';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import IStaticProps from '../src/interfaces/IStaticProps';
+import ISignup from '../src/pages/SignUp/interfaces/ISignup';
 
 const SignUp = () => {
 	const [email, setEmail] = useState('');
@@ -11,7 +12,7 @@ const SignUp = () => {
 	const [passwordValid, setPasswordValid] = useState(false);
 	const [formValid, setFormValid] = useState(true);
 
-	const emailHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+	const emailHandler: ISignup["emailHandler"] = (e) => {
 		setEmail(e.target.value)
 		let valid_email = /\S{3,}@\w{4,}\.\w{2,6}/;
 
@@ -22,7 +23,7 @@ const SignUp = () => {
 		}
 	}
 
-	const passwordHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+	const passwordHandler: ISignup["passwordHandler"] = (e) => {
 		setPassword(e.target.value)
 		let valid_password = /^(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
@@ -33,11 +34,11 @@ const SignUp = () => {
 		}
 	}
 
-	const Handleshow = () => {
+	const Handleshow: ISignup["Handleshow"] = () => {
 		setShowPassword(!showPassword)
 	}
 
-	const validHandler: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+	const validHandler: ISignup["validHandler"] = (e) => {
 		e.preventDefault()
 		if (emailValid && passwordValid) {
 			setFormValid(true);

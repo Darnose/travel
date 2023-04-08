@@ -7,65 +7,77 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
-import button from '../../components/Button/sass/Button.module.scss'
 
 import '../../i18n/i18n'
+import ISignup from './interfaces/ISignup';
 
-const SignUpView = (props: any) => {
-    const { t } = useTranslation(['signup', 'common']);
+const SignUpView = ({
+	emailHandler,
+	passwordHandler,
+	showPassword,
+	Handleshow,
+	validHandler,
+	email,
+	password,
+	emailValid,
+	passwordValid,
+	formValid,
+}: ISignup) => {
+
+  const { t } = useTranslation(['signup', 'common']);
     
   return (
     <Layout>
-        <form action="#" className={styles.authorization}>
-            <Title>
-            	{t('signUp')}
-            </Title>
-            <Input
-				title={t('inputTitle1')}
-				onChange={e => props.emailHandler(e)}
-				value={props.email.trim()}
-				type={'email'}
-				placeholder={'Enter email...'}
-				name={'email'}
-			/>
-            {(!props.emailValid && !props.formValid) ?
-			<span className={styles.error__msg}>
-				{t('validEmail')}
-			</span> :
-			 null}
-            <Input
-				title={t('inputTitle2')}
-				onChange={e => props.passwordHandler(e)}
-				value={props.password.trim()}
-				type={props.showPassword ? 'text' : 'password'}
-				placeholder={'Enter password...'}
-				name={'password'}
-			/>
-            {(!props.passwordValid && !props.formValid) ? 
-			<span className={styles.error__msg}>
-				{t('validPassword')}
-			</span> : 
-			null}
-			<Button
-					type={'button'}
-					onClick={props.Handleshow}
-					text={props.showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}
-					className={button.eye}
-				/>
-			<div className={styles.buttons}>
-				<Button
-					type={'submit'}
-					onClick={e => props.validHandler(e)}
-					text={t('SignUp')}
-					className={button.authorization__btn}
-				/>
-				<span className={styles.link}>
-					<Link href={'/login'}>
-						{t('iHaveAcc')}
-					</Link>
-				</span> 
-            </div>    
-        </form>
+      <form action="#" className={styles.authorization}>
+        <Title>
+          {t('signUp')}
+        </Title>
+        <Input
+          title={t('inputTitle1')}
+          onChange={e => emailHandler(e)}
+          value={email.trim()}
+          type='email'
+          placeholder={t('placeholderEmail')}
+          name='email'
+        />
+        {(!emailValid && !formValid) ?
+        <span className={styles.error__msg}>
+          {t('validEmail')}
+        </span> :
+        null}
+        <Input
+          title={t('inputTitle2')}
+          onChange={e => passwordHandler(e)}
+          value={password.trim()}
+          type={showPassword ? 'text' : 'password'}
+          placeholder={t('placeholderPass')}
+          name='password'
+        />
+        {(!passwordValid && !formValid) ? 
+        <span className={styles.error__msg}>
+          {t('validPassword')}
+        </span> : 
+        null}
+        <Button
+          type='button'
+          onClick={Handleshow}
+          text={showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}
+          styleType="eye"
+        />
+        <div className={styles.buttons}>
+          <Button
+            type='submit'
+            onClick={e => validHandler(e)}
+            text={t('SignUp')}
+            styleType="authorization__btn"
+          />
+          <span className={styles.link}>
+            <Link href='/login'>
+              {t('iHaveAcc')}
+            </Link>
+          </span> 
+        </div>    
+      </form>
     </Layout>
   );
 }
