@@ -52,12 +52,30 @@
     .eye {
         position: absolute;
         top: 273px;
-        left: 464px;
+        left: 462px;
         background: transparent;
         border: none;
         width: 16px;
-        height: 15px;
+        height: 16px;
         font-size: 14px;
+        cursor: pointer;
+    }
+    .Xmark {
+        position: absolute;
+        top: 69px;
+        left: 462px;
+        background: transparent;
+        border: none;
+        width: 14px;
+        height: 22px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .search {
+        background: transparent;
+        border: none;
+        width: 25px;
+        height: 25px;
         cursor: pointer;
     }
 }

@@ -5,7 +5,7 @@ import IStaticProps from '../src/interfaces/IStaticProps';
 const Forgot = () => {
 	return (
 		<ForgotView />
-    )
+  )
 }
 
 export async function getStaticProps({ locale }: IStaticProps) {
