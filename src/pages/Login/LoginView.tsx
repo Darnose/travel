@@ -24,7 +24,7 @@ const LoginView = ({
 	formValid,
 }: ILogin) => {
 
-  const { t } = useTranslation(['login', 'signup', 'common']);
+  const { t } = useTranslation('login');
 
   return (
     <Layout>
@@ -33,37 +33,41 @@ const LoginView = ({
           {t('logIn')}
         </Title>
         <Input
-          title={t('inputTitle1', { ns: 'signup' })}
+          title={t('inputTitle1') ?? ''}
           onChange={e => emailHandler(e)}
           value={email.trim()}
           type='email'
-          placeholder={t('placeholderEmail', { ns: 'signup' })}
+          placeholder={t('placeholderEmail')}
           name='email'
         />
         {(!emailValid && !formValid) ?
         <span className={styles.error__msg}>
-          {t('validEmail', { ns: 'signup' })}
+          {t('validEmail')}
         </span> :
         null}
         <Input
-          title={t('inputTitle2', { ns: 'signup' })}
+          title={t('inputTitle2') ?? ''}
           onChange={e => passwordHandler(e)}
           value={password.trim()}
           type={showPassword ? 'text' : 'password'}
-          placeholder={t('placeholderPass', { ns: 'signup' })}
+          placeholder={t('placeholderPass')}
           name='password'
         />
         {(!passwordValid && !formValid) ? 
         <span className={styles.error__msg}>
-          {t('validPassword', { ns: 'signup' })}
+          {t('validPassword')}
         </span> : 
         null}
-        <Button
-          type='button'
-          onClick={Handleshow}
-          text={showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}
-          styleType='eye'
-        />
+        {
+          password && (
+            <Button
+            type='button'
+            onClick={Handleshow}
+            text={showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}
+            styleType="eye"
+          />
+          )
+        }
         <div className={styles.buttons}>
           <Button
             type='submit'
@@ -82,7 +86,7 @@ const LoginView = ({
           <span className={styles.link}>
             {t("dontHave")}
             <Link href={'/signup'}>
-              {t('SignUp', { ns: 'signup' })}
+              {t('SignUp')}
             </Link>
           </span>
         </div>

@@ -42,10 +42,8 @@ const Login = () => {
 		e.preventDefault()
 		if (emailValid && passwordValid) {
 			setFormValid(true);
-			console.log('send')
 		} else {
 			setFormValid(false);
-			console.log('error')
 		}
 	}
 
@@ -68,7 +66,7 @@ const Login = () => {
 export async function getStaticProps({ locale }: IStaticProps) {
 	return {
 		props: {
-		...(await serverSideTranslations(locale, ['login', 'signup'])),
+		...(await serverSideTranslations(locale, ['login'])),
 		},
 	};
 }

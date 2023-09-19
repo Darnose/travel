@@ -8,16 +8,18 @@ import Button from '../../components/Button/Button';
 import '../../i18n/i18n'
 
 const ForgotView = () => {
-    const { t } = useTranslation(['login', 'signup']);
+    const { t } = useTranslation('login');
 
   return (
-    <Layout>
+    <Layout
+      styleType="container"
+    >
       <form action="#" className={styles.authorization}>
         <Title>
           {t('Forgot')}
         </Title>
         <Input
-          title={t('inputTitle1', { ns: 'signup' })}
+          title={t('inputTitle1')}
           type='email'
           placeholder='Enter email...'
           name='email'

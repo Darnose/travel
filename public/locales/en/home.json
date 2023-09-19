@@ -1,3 +1,6 @@
 {
-  "searchLocation": "Search Location"
+  "searchLocation": "Search Location",
+  "Feels": "Feels like",
+  "Humidity": "Humidity",
+  "Wind": "Wind speed"
 }

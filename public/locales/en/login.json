@@ -3,5 +3,14 @@
     "Forgot": "Forgot password",
     "Log": "Login",
     "dontHave": "Don't have an account yet?",
-    "sendEmail": "Send email"
+    "sendEmail": "Send email",
+    "signUp": "Sign up to the app",
+    "validEmail": "Email is not valid",
+    "validPassword": "Password must have at least one uppercase ('A'-'Z')",
+    "placeholderEmail": "Enter email...",
+    "placeholderPass": "Enter password...",
+    "iHaveAcc": "I have an account",
+    "SignUp": "Sign Up",
+    "inputTitle1": "Email",
+    "inputTitle2": "Password"
   }

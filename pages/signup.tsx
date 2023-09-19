@@ -42,10 +42,8 @@ const SignUp = () => {
 		e.preventDefault()
 		if (emailValid && passwordValid) {
 			setFormValid(true);
-			console.log('send')
 		} else {
 			setFormValid(false);
-			console.log('error')
 		}
 	}
 
@@ -63,7 +61,7 @@ const SignUp = () => {
 			passwordValid={passwordValid}
 			formValid={formValid}
 		/>
-    )
+  )
 }
 
 export async function getStaticProps({ locale }: IStaticProps) {

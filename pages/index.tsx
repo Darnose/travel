@@ -2,26 +2,42 @@ import axios from 'axios';
 import { useState } from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import HomeView from '../src/pages/Home/HomeView';
-import IHome from '../src/pages/Home/interfaces/IHome';
+import IHome, { IData } from '../src/pages/Home/interfaces/IHome';
 import IStaticProps from '../src/interfaces/IStaticProps';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = () => {
   
-  const [data, setData] = useState({});
-  const [location, setLocation] = useState('');
-  const _apiKey = 'b8b5bf29247ffaa27bd650896a05c6b3';
+  const [data, setData] = useState<IData>({} as IData);
+  const [location, setLocation] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+  const _apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${_apiKey}`;
 
   
+ 
+
   const searchLocation: IHome["searchLocation"] = (e) => {
-    axios.get(url)
+    e.preventDefault();
+    const successReq = () => toast.success('Request successful');
+    const errorReq = () => toast.error('Request completed with an error');
+
+    if(location.length >= 3) {
+      setLoading(true);
+      axios.get(url)
       .then((response) => {
-        setData(response.data)
+        setData(response.data);
+        successReq();
       })
-      .catch((error) => {
-        console.error(error)
+      .catch(() => {
+        errorReq();
       })
+      .finally(() => {
+        setLoading(false);
+      })
+    }
   }
 
   const locationHandler: IHome["locationHandler"] = (e) => {
@@ -29,8 +45,8 @@ const Home = () => {
   }
 
   const deleteLocation: IHome["deleteLocation"] = () => {
-    setLocation('')
-    setData({})
+    setLocation('');
+    setData({} as IData);
   }
 
 
@@ -39,10 +55,11 @@ const Home = () => {
       searchLocation={searchLocation}
       data={data}
       location={location}
+      loading={loading}
       locationHandler={locationHandler}
       deleteLocation={deleteLocation}
     />
-  );
+  )
   
 }
 

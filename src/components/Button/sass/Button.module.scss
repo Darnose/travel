@@ -62,8 +62,8 @@
     }
     .Xmark {
         position: absolute;
-        top: 69px;
-        left: 462px;
+        left: 460px;
+        bottom: 24px;
         background: transparent;
         border: none;
         width: 14px;
@@ -74,8 +74,12 @@
     .search {
         background: transparent;
         border: none;
-        width: 25px;
-        height: 25px;
+        width: 66px;
+        height: 66px;
         cursor: pointer;
+        svg {
+            width: 25px;
+            height: 25px;
+        }
     }
 }

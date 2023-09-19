@@ -7,5 +7,4 @@ export default interface IInput {
     placeholder:string;
     name: string;
     onChange?: React.ChangeEventHandler<HTMLInputElement>;
-    onKeyPress?: React.KeyboardEventHandler<HTMLInputElement>;
 }

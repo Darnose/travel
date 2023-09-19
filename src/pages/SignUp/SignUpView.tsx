@@ -24,10 +24,12 @@ const SignUpView = ({
 	formValid,
 }: ISignup) => {
 
-  const { t } = useTranslation(['signup', 'common']);
+  const { t } = useTranslation('login');
     
   return (
-    <Layout>
+    <Layout
+      styleType="container"
+    >
       <form action="#" className={styles.authorization}>
         <Title>
           {t('signUp')}
@@ -58,12 +60,16 @@ const SignUpView = ({
           {t('validPassword')}
         </span> : 
         null}
-        <Button
-          type='button'
-          onClick={Handleshow}
-          text={showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}
-          styleType="eye"
-        />
+        {
+          password && (
+            <Button
+            type='button'
+            onClick={Handleshow}
+            text={showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}
+            styleType="eye"
+          />
+          )
+        }
         <div className={styles.buttons}>
           <Button
             type='submit'
