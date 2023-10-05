@@ -1,73 +1,23 @@
 @import '../../../styles/variables.scss';
 
-.search {
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  height: 100%;
-  .buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 44px;
-  }    
-  .link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 37px;
-    margin-right: 37px;
-    height: 46px;
-    font-size: 16px;
-    transition: all 0.2s ease;
-    a {
-      text-decoration: none;
-      color: $blue;
-      transition: all 0.2s ease;
-      margin-left: 5px;
-      margin-right: 5px;
-      border-bottom: 1px solid transparent;
-      &:hover {
-        border-bottom: 1px solid $blue;
-      }
-    }
-  }
-}
-.search_btn {
-  width: 70px;
-  height: 70px;
-  border-radius: 5px;
-  margin-left: -2px;
-  border: 2px solid $dark;
-}
 .wrap {
   display: flex;
   justify-content: center;
   width: 100%;
   height: 100%;
-  .wrap-enter {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  .wrap-enter-done {
-    opacity: 1;
-    transform: translateX(0);
-    transition: opacity 3000ms, transform 3000ms;
-  }
-  .wrap-exit {
-    opacity: 1;
-  }
-  .wrap-exit-active {
-    opacity: 0;
-    transform: scale(0.9);
-    transition: opacity 3000ms, transform 3000ms;
-  }
+  flex-wrap: wrap;
   .map {
+    display: flex;
+    justify-content: center;
     width: 555px;
     height: 350px;
+    .currencies {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      font-weight: 700;
+    }
   }
   .weather {
     display: flex;
@@ -87,7 +37,11 @@
       margin-top: 20px;
       p {
         font-size: 22px;
+        &::first-letter {
+          text-transform: uppercase;
+        }
       }
+  
     }
     .bottom {
       display: flex;

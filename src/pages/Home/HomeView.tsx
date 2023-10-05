@@ -4,7 +4,7 @@ import Title from '../../components/Title/Title';
 import styles from './sass/Home.module.scss';
 import Loader from '../../components/Loader/Loader';
 import Search from '../../components/Search/Search';
-import ReactMapGL from 'react-map-gl';
+import Map, { NavigationControl, ScaleControl, FullscreenControl } from 'react-map-gl';
 
 import 'react-toastify/dist/ReactToastify.css';
 import 'mapbox-gl/dist/mapbox-gl.css'
@@ -15,6 +15,7 @@ import IHome from './interfaces/IHome';
 const HomeView = ({
   searchLocation,
   data,
+  exchangeRates,
   location,
   loading,
   deleteLocation,
@@ -22,7 +23,7 @@ const HomeView = ({
 }: IHome) => {
 
   const { t } = useTranslation('home');
-  
+
   return (
     <Layout
       styleType="container_top"
@@ -47,7 +48,7 @@ const HomeView = ({
                     {data.main ? <Title>{data.main.temp.toFixed()}°C</Title> : null}
                   </div>
                   <div className={styles.description}>
-                  {data.weather ? <p>{data.weather[0].main}</p> : null}
+                  {data.weather ? <p>{data.weather[0].description}</p> : null}
                   </div>
                 </div>
                 <div className={styles.bottom}>
@@ -68,13 +69,29 @@ const HomeView = ({
             : null}
             { data.name ?
               <div className={styles.map}>
-                <ReactMapGL
-                  latitude={data.coord.lat}
-                  longitude={data.coord.lon}
-                  zoom={9}
+                <Map
+                  initialViewState={{
+                    longitude: data.coord.lon,
+                    latitude: data.coord.lat,
+                    zoom: 10
+                  }}
+                  minZoom={3}
+                  maxZoom={19}
                   mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_KEY}
                   mapStyle={process.env.NEXT_PUBLIC_MAPSTYLE}
-                />
+                  fadeDuration={300}
+                >
+                  <NavigationControl />
+                  <ScaleControl />
+                  <FullscreenControl />
+                </Map>
+              </div>
+            : null}
+            {data.name ?
+              <div className={styles.map}>
+                <p className={styles.currencies}>
+                  {`1 USD = ${Object.values(exchangeRates.rates)[0].toFixed(2)} ${Object.keys(exchangeRates.rates)}`}
+                </p>
               </div>
             : null}
           </div>

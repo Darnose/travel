@@ -7,7 +7,7 @@ export interface IData {
     lat:number
   }
   weather: [{
-    main: string,
+    description: string,
   }]
   main: {
     temp: number,
@@ -17,14 +17,24 @@ export interface IData {
   wind: {
     speed: number,
   }
+  sys: {
+    country: string,
+  }
+}
+
+export interface IRates {
+  base: string,
+  rates: {
+    keys: number,
+  }
 }
 
 export default interface IHome {
     data: IData,
+    exchangeRates: IRates,
     location: string,
     loading: boolean,
     locationHandler: React.ChangeEventHandler<HTMLInputElement>,
     searchLocation: React.MouseEventHandler<HTMLButtonElement>,
     deleteLocation: React.MouseEventHandler<HTMLButtonElement>,
 }
-
