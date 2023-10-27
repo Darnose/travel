@@ -29,9 +29,20 @@ export interface IRates {
   }
 }
 
+export interface IAttractions {
+  data: [{
+    name: string,
+    address_obj: {
+      street1: string,
+    }
+  }]
+}
+
 export default interface IHome {
     data: IData,
+    latLong: string,
     exchangeRates: IRates,
+    attractions: IAttractions,
     location: string,
     loading: boolean,
     locationHandler: React.ChangeEventHandler<HTMLInputElement>,

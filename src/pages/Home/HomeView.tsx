@@ -16,6 +16,7 @@ const HomeView = ({
   searchLocation,
   data,
   exchangeRates,
+  attractions,
   location,
   loading,
   deleteLocation,
@@ -92,6 +93,20 @@ const HomeView = ({
                 <p className={styles.currencies}>
                   {`1 USD = ${Object.values(exchangeRates.rates)[0].toFixed(2)} ${Object.keys(exchangeRates.rates)}`}
                 </p>
+              </div>
+            : null}
+            {data.name ?
+              <div className={styles.attractions}>
+                <Title>
+                  <>
+                    {t('Sights')} {data.name}
+                  </>
+                </Title>
+                {attractions.data.map((attraction, i) => (
+                    <p key={i}>
+                      {`${i + 1}. ${attraction.name}, ${attraction.address_obj.street1}`}
+                    </p>
+                  ))}
               </div>
             : null}
           </div>
