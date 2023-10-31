@@ -4,6 +4,7 @@ import { serverSideTranslations, } from 'next-i18next/serverSideTranslations';
 import HomeView from '../src/pages/Home/HomeView';
 import IHome, { IData, IRates, IAttractions } from '../src/pages/Home/interfaces/IHome';
 import IStaticProps from '../src/interfaces/IStaticProps';
+import { loadStripe } from "@stripe/stripe-js";
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -26,6 +27,8 @@ const Home = () => {
   const urlCurrency = `https://openexchangerates.org/api/latest.json?app_id=${apiCurrency}&symbols=${currentCurrency}`;
   const linkAttr = '/v1/location/nearby_search';
   const urlAttract = `${linkAttr}?latLong=${latLong}&key=${apiAttractions}&category=attractions&radius=30&language=en`;
+  const [clientSecret, setClientSecret] = useState("");
+  const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
   
   const searchLocation: IHome["searchLocation"] = (e) => {
     e.preventDefault();
@@ -73,6 +76,12 @@ const Home = () => {
     })
   }, [urlAttract, latLong])
 
+  useEffect(() => {
+    axios.get("/api/create-payment-intent")
+    .then((response)=> {
+      setClientSecret(response.data)
+    })
+  }, [])
 
   const locationHandler: IHome["locationHandler"] = (e) => {
     setLocation(e.target.value)
@@ -89,6 +98,8 @@ const Home = () => {
       searchLocation={searchLocation}
       data={data}
       latLong={latLong}
+      clientSecret={clientSecret}
+      stripePromise={stripePromise}
       exchangeRates={exchangeRates}
       attractions={attractions}
       location={location}
