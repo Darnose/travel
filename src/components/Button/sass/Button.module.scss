@@ -82,4 +82,23 @@
             height: 25px;
         }
     }
+    .donate {
+        position: fixed;
+        bottom: 2%;
+        right: 2%;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: transparent;
+        background: $blue;
+        a {
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+            text-decoration: none;
+            width: 60px;
+            color: $ultra-white;
+        }
+        
+    }
 }

@@ -4,23 +4,20 @@ import Title from '../../components/Title/Title';
 import styles from './sass/Home.module.scss';
 import Loader from '../../components/Loader/Loader';
 import Search from '../../components/Search/Search';
+import Button from '../../components/Button/Button';
+import Link from 'next/dist/client/link';
 import Map, { NavigationControl, ScaleControl, FullscreenControl } from 'react-map-gl';
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
 
 import 'react-toastify/dist/ReactToastify.css';
 import 'mapbox-gl/dist/mapbox-gl.css'
 
 import '../../i18n/i18n'
 import IHome from './interfaces/IHome';
-import CheckoutForm from '../../components/Payment/Payment';
 
 const HomeView = ({
   searchLocation,
   data,
   exchangeRates,
-  clientSecret,
-  stripePromise,
   attractions,
   location,
   loading,
@@ -40,11 +37,14 @@ const HomeView = ({
         deleteLocation={deleteLocation}
         locationHandler={locationHandler}
       />
-      {clientSecret && (
-        <Elements options={clientSecret} stripe={stripePromise}>
-          <CheckoutForm />
-        </Elements>
-      )}
+      <Button
+          type='button'
+          text={
+            <Link href='/payment'>
+              Donate 5$
+            </Link>}
+          styleType="donate"
+        />
         {loading ? (
           <Loader/>
         ) : (

@@ -42,8 +42,6 @@ export default interface IHome {
     data: IData,
     latLong: string,
     exchangeRates: IRates,
-    clientSecret: any,
-    stripePromise: Promise<Stripe>,
     attractions: IAttractions,
     location: string,
     loading: boolean,
