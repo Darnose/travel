@@ -1,6 +1,6 @@
-import  { Stripe }  from "@stripe/stripe-js";
+import  { Stripe, StripeElementsOptions }  from "@stripe/stripe-js";
 
 export default interface IPayment {
-    clientSecret: string | undefined,
+    clientSecret: StripeElementsOptions | undefined,
     stripePromise: Promise<Stripe | null>,
 }

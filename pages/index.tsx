@@ -4,7 +4,6 @@ import { serverSideTranslations, } from 'next-i18next/serverSideTranslations';
 import HomeView from '../src/pages/Home/HomeView';
 import IHome, { IData, IRates, IAttractions } from '../src/pages/Home/interfaces/IHome';
 import IStaticProps from '../src/interfaces/IStaticProps';
-import { loadStripe } from "@stripe/stripe-js";
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -70,7 +69,6 @@ const Home = () => {
     axios.get(`/api/${urlAttract}`)
     .then((response)=> {
       setAttractions(response.data)
-      console.log(response.data)
     })
   }, [urlAttract, latLong])
 

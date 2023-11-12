@@ -1,15 +1,15 @@
 import Layout from '../../layout/Layout';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from '../../components/Payment/Payment';
-import IHome from './interfaces/IPayment';
-import Title from '../../components/Title/Title';
+import IPayment from './interfaces/IPayment';
 import Link from 'next/dist/client/link';
+
 
 
 const PaymentView = ({
   clientSecret,
   stripePromise
-}: IHome) => {
+}: IPayment) => {
 
   return (
     <Layout

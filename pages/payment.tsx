@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react';
 import { serverSideTranslations, } from 'next-i18next/serverSideTranslations';
 import PaymentView from '../src/pages/Payment/PaymentView';
 import IStaticProps from '../src/interfaces/IStaticProps';
-import { loadStripe } from "@stripe/stripe-js";
+import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js";
 
 
 const Payment = () => {
-  const [clientSecret, setClientSecret] = useState("");
+  const [clientSecret, setClientSecret] = useState<StripeElementsOptions>();
   // @ts-ignore
   const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
   

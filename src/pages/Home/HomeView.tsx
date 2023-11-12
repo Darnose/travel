@@ -4,6 +4,7 @@ import Title from '../../components/Title/Title';
 import styles from './sass/Home.module.scss';
 import Loader from '../../components/Loader/Loader';
 import Search from '../../components/Search/Search';
+import Weather from '../../components/Weather/Weather';
 import Button from '../../components/Button/Button';
 import Link from 'next/dist/client/link';
 import Map, { NavigationControl, ScaleControl, FullscreenControl } from 'react-map-gl';
@@ -50,33 +51,9 @@ const HomeView = ({
         ) : (
           <div className={styles.wrap}>
             {data.name ?
-              <div className={styles.weather}>
-                <div className={styles.top}>
-                  <div className={styles.location}>
-                    <p>{data.name}</p>
-                  </div>
-                  <div className={styles.temp}>
-                    {data.main ? <Title>{data.main.temp.toFixed()}°C</Title> : null}
-                  </div>
-                  <div className={styles.description}>
-                  {data.weather ? <p>{data.weather[0].description}</p> : null}
-                  </div>
-                </div>
-                <div className={styles.bottom}>
-                  <div className={styles.feels}>
-                  {data.main ? <p className={styles.bold}>{data.main.feels_like.toFixed()}°C</p> : null}
-                    <p>{t('Feels')}</p>
-                  </div>
-                  <div className={styles.humidity}>
-                  {data.main ? <p className={styles.bold}>{data.main.humidity.toFixed()}%</p> : null}
-                    <p>{t('Humidity')}</p>
-                  </div>
-                  <div className={styles.wind}>
-                  {data.main ? <p className={styles.bold}>{data.wind.speed.toFixed()}m/s</p> : null}
-                    <p>{t('Wind')}</p>
-                  </div>
-                </div>
-              </div>
+              <Weather
+                data={data}
+              />
             : null}
             { data.name ?
               <div className={styles.map}>
@@ -108,15 +85,15 @@ const HomeView = ({
             {data.name ?
               <div className={styles.attractions}>
                 <Title>
-                  <>
-                    {t('Sights')} {data.name}
-                  </>
+                  {t('Sights')} {data.name}
                 </Title>
+                <ul>
                 {attractions.data.map((attraction, i) => (
-                    <p key={i}>
-                      {`${i + 1}. ${attraction.name}, ${attraction.address_obj.street1}`}
-                    </p>
+                  <li key={i}>
+                    {`${i + 1}. ${attraction.name}, ${attraction.address_obj.street1}`}
+                  </li>
                   ))}
+                </ul>
               </div>
             : null}
           </div>
