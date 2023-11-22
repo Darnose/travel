@@ -93,10 +93,12 @@
         background: $blue;
         a {
             display: flex;
+            align-items: center;
+            width: 60px;
+            height: 100%;
             margin-left: auto;
             margin-right: auto;
             text-decoration: none;
-            width: 60px;
             color: $ultra-white;
         }
         

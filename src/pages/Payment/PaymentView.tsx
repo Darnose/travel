@@ -4,8 +4,6 @@ import CheckoutForm from '../../components/Payment/Payment';
 import IPayment from './interfaces/IPayment';
 import Link from 'next/dist/client/link';
 
-
-
 const PaymentView = ({
   clientSecret,
   stripePromise

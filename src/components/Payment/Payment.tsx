@@ -11,7 +11,7 @@ const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [message, setMessage] = useState<string>('');
+  const [message, setMessage] = useState<string>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -28,8 +28,7 @@ const CheckoutForm = () => {
     }
 
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-      // @ts-ignore
-      switch (paymentIntent.status) {
+      switch (paymentIntent?.status) {
         case "succeeded":
           setMessage("Payment succeeded!");
           break;
@@ -71,7 +70,6 @@ const CheckoutForm = () => {
     // be redirected to an intermediate site first to authorize the payment, then
     // redirected to the `return_url`.
     if (error.type === "card_error" || error.type === "validation_error") {
-      // @ts-ignore
       setMessage(error.message);
     } else {
       setMessage("An unexpected error occurred.");

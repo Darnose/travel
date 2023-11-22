@@ -42,7 +42,7 @@ const HomeView = ({
           type='button'
           text={
             <Link href='/payment'>
-              Donate 5$
+              {t('Donate')}
             </Link>}
           styleType="donate"
         />
@@ -75,13 +75,13 @@ const HomeView = ({
                 </Map>
               </div>
             : null}
-            {data.name ?
+            {data.name &&
               <div className={styles.map}>
                 <p className={styles.currencies}>
                   {`1 USD = ${Object.values(exchangeRates.rates)[0].toFixed(2)} ${Object.keys(exchangeRates.rates)}`}
                 </p>
               </div>
-            : null}
+            }
             {data.name ?
               <div className={styles.attractions}>
                 <Title>
@@ -89,7 +89,7 @@ const HomeView = ({
                 </Title>
                 <ul>
                 {attractions.data.map((attraction, i) => (
-                  <li key={i}>
+                  <li key={[attraction.name, i].join('_')}>
                     {`${i + 1}. ${attraction.name}, ${attraction.address_obj.street1}`}
                   </li>
                   ))}

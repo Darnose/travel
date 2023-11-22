@@ -4,15 +4,20 @@ import { serverSideTranslations, } from 'next-i18next/serverSideTranslations';
 import HomeView from '../src/pages/Home/HomeView';
 import IHome, { IData, IRates, IAttractions } from '../src/pages/Home/interfaces/IHome';
 import IStaticProps from '../src/interfaces/IStaticProps';
+import { useTranslation } from 'next-i18next';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { UA_CODE, UAH_CODE } from '../src/constants/strings';
+
 
 const Home = () => {
+
+  const { t } = useTranslation('home');
   
   const [data, setData] = useState<IData>({} as IData);
-  const [countryCode, setCountryCode] = useState<string>('UA');
-  const [currentCurrency, setCurrentCurrency] = useState<string>('UAH');
+  const [countryCode, setCountryCode] = useState<string>(UA_CODE);
+  const [currentCurrency, setCurrentCurrency] = useState<string>(UAH_CODE);
   const [exchangeRates, setExchangeRates] = useState<IRates>({} as IRates);
   const [attractions, setAttractions] = useState<IAttractions>({} as IAttractions)
   const [location, setLocation] = useState<string>('');
@@ -29,8 +34,8 @@ const Home = () => {
   
   const searchLocation: IHome["searchLocation"] = (e) => {
     e.preventDefault();
-    const successReq = () => toast.success('Request successful');
-    const errorReq = () => toast.error('Request completed with an error');
+    const successReq = () => toast.success(t('Success'));
+    const errorReq = () => toast.error(t('Error'));
 
     if(location.length >= 3) {
       setLoading(true);
