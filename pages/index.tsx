@@ -8,7 +8,7 @@ import { useTranslation } from 'next-i18next';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { UA_CODE, UAH_CODE } from '../src/constants/strings';
+import { UA_CODE, UAH_CODE, LAT_LONG } from '../src/constants/strings';
 
 
 const Home = () => {
@@ -25,7 +25,7 @@ const Home = () => {
   const apiWeather = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
   const apiCurrency = process.env.NEXT_PUBLIC_CURRENCY_API_KEY;
   const apiAttractions = process.env.NEXT_PUBLIC_ATTRACTIONS_API_KEY;
-  const [latLong, setLatLong] = useState<string>('48.45%2C34.9833');
+  const [latLong, setLatLong] = useState<string>(LAT_LONG);
   const urlWeather = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiWeather}`;
   const urlCountry = `https://restcountries.com/v3/alpha/${countryCode}`;
   const urlCurrency = `https://openexchangerates.org/api/latest.json?app_id=${apiCurrency}&symbols=${currentCurrency}`;

@@ -1,37 +1,9 @@
-@import '../../../styles/variables.scss';
-
 .wrap {
   display: flex;
   justify-content: center;
   width: 100%;
   height: 100%;
   flex-wrap: wrap;
-  .map {
-    display: flex;
-    justify-content: center;
-    width: 600px;
-    height: 350px;
-    .currencies {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 30px;
-      font-weight: 700;
-    }
-  }
-  .attractions {
-    width: 600px;
-    height: 350px;
-    padding: 25px 40px;
-    h1 {
-      margin-bottom: 20px;
-    }
-    li {
-      margin-top: 5px;
-      list-style: none;
-    }
-  }
-  
 }
 
 
