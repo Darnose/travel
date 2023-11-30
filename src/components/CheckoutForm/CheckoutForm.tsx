@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import styles from "./sass/Payment.module.scss"
+import styles from "./sass/CheckoutForm.module.scss"
 import {
   PaymentElement,
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
-import IPayment from "./interface/IPayment";
+import ICheckoutForm from "./interface/ICheckoutForm";
+import { useTranslation } from "next-i18next";
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -13,6 +14,8 @@ const CheckoutForm = () => {
 
   const [message, setMessage] = useState<string>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const { t } = useTranslation('home');
 
   useEffect(() => {
     if (!stripe) {
@@ -45,7 +48,7 @@ const CheckoutForm = () => {
     });
   }, [stripe]);
 
-  const handleSubmit = async (e: IPayment["handleSubmit"]) => {
+  const handleSubmit: ICheckoutForm["handleSubmit"] = async (e) => {
     e.preventDefault();
 
     if (!stripe || !elements) {
@@ -83,7 +86,7 @@ const CheckoutForm = () => {
       <PaymentElement id="payment-element" />
       <button className={styles.payment_btn} disabled={isLoading || !stripe || !elements} id="submit">
         <span className={styles.button_text} id="button-text">
-          Pay now
+          {t('Pay')}
         </span>
       </button>
       {message && <div className={styles.payment_message} id='payment-message'>{message}</div>}

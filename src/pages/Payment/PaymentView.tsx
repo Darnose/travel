@@ -1,13 +1,16 @@
 import Layout from '../../layout/Layout';
 import { Elements } from '@stripe/react-stripe-js';
-import CheckoutForm from '../../components/Payment/Payment';
+import CheckoutForm from '../../components/CheckoutForm/CheckoutForm';
 import IPayment from './interfaces/IPayment';
 import Link from 'next/dist/client/link';
+import { useTranslation } from 'next-i18next';
 
 const PaymentView = ({
   clientSecret,
   stripePromise
 }: IPayment) => {
+
+  const { t } = useTranslation('home');
 
   return (
     <Layout
@@ -16,7 +19,7 @@ const PaymentView = ({
       {clientSecret && (
         <Elements options={clientSecret} stripe={stripePromise}>
             <Link href={'/'}>
-              Back to main page
+              {t('Back')}
             </Link>
           <CheckoutForm />
         </Elements>

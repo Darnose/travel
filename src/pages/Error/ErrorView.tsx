@@ -5,7 +5,8 @@ import { NOT_FOUND } from '../../constants/httpStatusCodes';
 import IErrorView from './interfaces/IErrorView';
 import styles from './sass/Error.module.scss';
 
-function ErrorView({ statusCode }: IErrorView) {
+const ErrorView = ({ statusCode }: IErrorView) => {
+  
   const { t } = useTranslation('error');
 
   return (

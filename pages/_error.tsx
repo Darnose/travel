@@ -3,7 +3,7 @@ import IError from '../src/pages/Error/interfaces/IError';
 import IServerSideProps from '../src/interfaces/IServerSideProps';
 import ErrorView from '../src/pages/Error/ErrorView';
 
-function Error({ statusCode }: IError) {
+const ErrorPage = ({ statusCode }: IError) => {
   return (
     <ErrorView statusCode={statusCode} />
   );
@@ -18,4 +18,4 @@ export async function getServerSideProps({ locale, res }: IServerSideProps) {
   };
 }
 
-export default Error;
+export default ErrorPage;
