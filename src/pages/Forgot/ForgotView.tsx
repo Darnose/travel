@@ -19,7 +19,7 @@ const ForgotView = () => {
           {t('Forgot')}
         </Title>
         <Input
-          title={t('inputTitle1')}
+          title={t('inputTitle1') ?? ''}
           type='email'
           placeholder='Enter email...'
           name='email'

@@ -15,6 +15,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 
 import '../../i18n/i18n'
 import IHome from './interfaces/IHome';
+import Navigation from '../../components/Navigation/Navigation';
 
 
 const HomeView = ({
@@ -34,6 +35,7 @@ const HomeView = ({
     <Layout
       styleType="container_top"
     >
+      <Navigation/>
       <Search
         searchLocation={searchLocation}
         location={location}

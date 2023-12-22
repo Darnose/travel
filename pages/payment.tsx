@@ -8,7 +8,7 @@ import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js";
 
 const Payment = () => {
   const [clientSecret, setClientSecret] = useState<StripeElementsOptions>();
-  const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? '');
+  const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
   
   useEffect(() => {
     axios.get("/api/create-payment-intent")

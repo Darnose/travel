@@ -2,6 +2,7 @@
 
 .button {
     .authorization__btn {
+        position: relative;
         width: 193px;
         height: 46px;
         background: $blue;
@@ -51,7 +52,7 @@
     }
     .eye {
         position: absolute;
-        top: 273px;
+        top: 227px;
         left: 462px;
         background: transparent;
         border: none;

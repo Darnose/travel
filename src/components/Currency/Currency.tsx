@@ -1,4 +1,4 @@
-import styles from './sass/Weather.module.scss';
+import styles from './sass/Currency.module.scss';
 import ICurrency from './interface/ICurrency';
 
 const Currency = ({exchangeRates}: ICurrency) => {

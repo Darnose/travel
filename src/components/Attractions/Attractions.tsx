@@ -16,10 +16,10 @@ const Attractions = ({attractions, data}: IAttraction) => {
         {t('Sights')} {data.name}
       </Title>
       <ul>
-      {attractions.data.map((attraction, i) => (
-        <li key={[attraction.name, i].join('_')}>
-          {`${i + 1}. ${attraction.name}, ${attraction.address_obj.street1}`}
-        </li>
+        {attractions.data.map((attraction, i) => (
+          <li key={[attraction.name, i].join('_')}>
+            {`${i + 1}. ${attraction.name}, ${attraction.address_obj.street1}`}
+          </li>
         ))}
       </ul>
     </div>
