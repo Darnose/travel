@@ -3,6 +3,7 @@ import LoginView from '../src/pages/Login/LoginView';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import IStaticProps from '../src/interfaces/IStaticProps';
 import ILogin from '../src/pages/Login/interfaces/ILogin';
+import { signIn } from 'next-auth/react';
 
 const Login = () => {
 	const [email, setEmail] = useState('');
@@ -42,6 +43,7 @@ const Login = () => {
 		e.preventDefault()
 		if (emailValid && passwordValid) {
 			setFormValid(true);
+			signIn('credentials', {email, password, redirect: true, callbackUrl: '/'})
 		} else {
 			setFormValid(false);
 		}

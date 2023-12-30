@@ -3,5 +3,10 @@
   "Feels": "Feels like",
   "Humidity": "Humidity",
   "Wind": "Wind speed",
-  "Sights": "Sights of the city of"
+  "Sights": "Sights of the city of",
+  "Donate": "Donate 5$",
+  "Success": "Request successful",
+  "Error": "Request completed with an error",
+  "Pay": "Pay now",
+  "Back": "Back to the main page"
 }

@@ -4,15 +4,20 @@ import { serverSideTranslations, } from 'next-i18next/serverSideTranslations';
 import HomeView from '../src/pages/Home/HomeView';
 import IHome, { IData, IRates, IAttractions } from '../src/pages/Home/interfaces/IHome';
 import IStaticProps from '../src/interfaces/IStaticProps';
+import { useTranslation } from 'next-i18next';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { UA_CODE, UAH_CODE, LAT_LONG } from '../src/constants/strings';
+
 
 const Home = () => {
+
+  const { t } = useTranslation('home');
   
   const [data, setData] = useState<IData>({} as IData);
-  const [countryCode, setCountryCode] = useState<string>('UA');
-  const [currentCurrency, setCurrentCurrency] = useState<string>('UAH');
+  const [countryCode, setCountryCode] = useState<string>(UA_CODE);
+  const [currentCurrency, setCurrentCurrency] = useState<string>(UAH_CODE);
   const [exchangeRates, setExchangeRates] = useState<IRates>({} as IRates);
   const [attractions, setAttractions] = useState<IAttractions>({} as IAttractions)
   const [location, setLocation] = useState<string>('');
@@ -20,7 +25,7 @@ const Home = () => {
   const apiWeather = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
   const apiCurrency = process.env.NEXT_PUBLIC_CURRENCY_API_KEY;
   const apiAttractions = process.env.NEXT_PUBLIC_ATTRACTIONS_API_KEY;
-  const [latLong, setLatLong] = useState<string>('48.45%2C34.9833');
+  const [latLong, setLatLong] = useState<string>(LAT_LONG);
   const urlWeather = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiWeather}`;
   const urlCountry = `https://restcountries.com/v3/alpha/${countryCode}`;
   const urlCurrency = `https://openexchangerates.org/api/latest.json?app_id=${apiCurrency}&symbols=${currentCurrency}`;
@@ -29,8 +34,8 @@ const Home = () => {
   
   const searchLocation: IHome["searchLocation"] = (e) => {
     e.preventDefault();
-    const successReq = () => toast.success('Request successful');
-    const errorReq = () => toast.error('Request completed with an error');
+    const successReq = () => toast.success(t('Success'));
+    const errorReq = () => toast.error(t('Error'));
 
     if(location.length >= 3) {
       setLoading(true);
@@ -69,7 +74,6 @@ const Home = () => {
     axios.get(`/api/${urlAttract}`)
     .then((response)=> {
       setAttractions(response.data)
-      console.log(response.data)
     })
   }, [urlAttract, latLong])
 

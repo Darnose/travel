@@ -1,0 +1,13 @@
+.map {
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  height: 350px;
+  .currencies {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 700;
+  }
+}

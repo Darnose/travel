@@ -1,72 +1,9 @@
-@import '../../../styles/variables.scss';
-
 .wrap {
   display: flex;
   justify-content: center;
   width: 100%;
   height: 100%;
   flex-wrap: wrap;
-  .map {
-    display: flex;
-    justify-content: center;
-    width: 600px;
-    height: 350px;
-    .currencies {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 30px;
-      font-weight: 700;
-    }
-  }
-  .attractions {
-    width: 600px;
-    height: 350px;
-    padding: 25px 30px;
-    h1 {
-      margin-bottom: 10px;
-    }
-    p {
-      margin-top: 5px;
-    }
-  }
-  .weather {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 600px;
-    padding: 30px 35px;
-    background: $blue;
-    border-radius: 5px;
-    opacity: 1;
-    .top {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: space-evenly;
-      margin-top: 20px;
-      p {
-        font-size: 22px;
-        &::first-letter {
-          text-transform: uppercase;
-        }
-      }
-    }
-    .bottom {
-      display: flex;
-      width: 100%;
-      justify-content: space-evenly;
-      margin-top: 100px;
-      p {
-        font-size: 18px;
-      }
-      .bold {
-        font-weight: 700;
-        text-align: center;
-      }
-    }
-  }
 }
 
 

@@ -10,6 +10,7 @@ import Button from '../../components/Button/Button';
 
 import '../../i18n/i18n'
 import ILogin from './interfaces/ILogin';
+import { GoogleButton } from '../../components/GoogleButton/GoogleButton';
 
 const LoginView = ({
 	emailHandler,
@@ -28,10 +29,11 @@ const LoginView = ({
 
   return (
     <Layout>
+      <Title>
+        {t('logIn')}
+      </Title>
+      <GoogleButton/>
       <form action="#" className={styles.authorization}>
-        <Title>
-          {t('logIn')}
-        </Title>
         <Input
           title={t('inputTitle1') ?? ''}
           onChange={e => emailHandler(e)}

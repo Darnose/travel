@@ -30,12 +30,12 @@ const SignUpView = ({
     <Layout
       styleType="container"
     >
+      <Title>
+        {t('signUp')}
+      </Title>
       <form action="#" className={styles.authorization}>
-        <Title>
-          {t('signUp')}
-        </Title>
         <Input
-          title={t('inputTitle1')}
+          title={t('inputTitle1') ?? ''}
           onChange={e => emailHandler(e)}
           value={email.trim()}
           type='email'
@@ -48,7 +48,7 @@ const SignUpView = ({
         </span> :
         null}
         <Input
-          title={t('inputTitle2')}
+          title={t('inputTitle2') ?? ''}
           onChange={e => passwordHandler(e)}
           value={password.trim()}
           type={showPassword ? 'text' : 'password'}
