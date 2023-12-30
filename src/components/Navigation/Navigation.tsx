@@ -8,14 +8,9 @@ const Navigation = () => {
 
   return (
     <div>
-      Navigation
-      {session?.data ? (
         <Link href="#" onClick={() => signOut({ callbackUrl: "/login" })}>
           Sign Out
         </Link>
-      ) : (
-        <Link href="/login">SignIn</Link>
-      )}
     </div>
   )
 }

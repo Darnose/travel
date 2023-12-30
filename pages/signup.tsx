@@ -3,6 +3,9 @@ import SignUpView from '../src/pages/SignUp/SignUpView';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import IStaticProps from '../src/interfaces/IStaticProps';
 import ISignup from '../src/pages/SignUp/interfaces/ISignup';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../src/Firebase/firebase';
+import { signIn } from 'next-auth/react';
 
 const SignUp = () => {
 	const [email, setEmail] = useState('');
@@ -42,6 +45,7 @@ const SignUp = () => {
 		e.preventDefault()
 		if (emailValid && passwordValid) {
 			setFormValid(true);
+			createUserWithEmailAndPassword(auth, email, password);
 		} else {
 			setFormValid(false);
 		}

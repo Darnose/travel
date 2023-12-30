@@ -26,7 +26,7 @@ const ForgotView = () => {
         />
         <div className={styles.buttons}>
           <Button
-            type={'submit'}
+            type='submit'
             text={t('sendEmail')}
             styleType="authorization__btn"
           />

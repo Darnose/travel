@@ -30,7 +30,6 @@ const HomeView = ({
 }: IHome) => {
 
   const { t } = useTranslation('home');
-
   return (
     <Layout
       styleType="container_top"
@@ -69,12 +68,12 @@ const HomeView = ({
                 exchangeRates={exchangeRates}
               />
             }
-            {data.name &&
+            {/* {data.name &&
               <Attractions
                 attractions={attractions}
                 data={data}
               />
-            }
+            } */}
           </div>
         )
         }
