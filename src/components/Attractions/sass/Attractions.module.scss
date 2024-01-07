@@ -1,12 +1,19 @@
 .attractions {
-  width: 600px;
-  height: 350px;
+  width: 550px;
+  height: 300px;
   padding: 25px 40px;
+  margin: 15px;
   h1 {
     margin-bottom: 20px;
   }
   li {
     margin-top: 5px;
     list-style: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .attractions {
+    margin: 10px 0;
   }
 }

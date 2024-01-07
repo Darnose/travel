@@ -5,7 +5,6 @@ import IStaticProps from '../src/interfaces/IStaticProps';
 import ISignup from '../src/pages/SignUp/interfaces/ISignup';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../src/Firebase/firebase';
-import { signIn } from 'next-auth/react';
 
 const SignUp = () => {
 	const [email, setEmail] = useState('');
@@ -71,7 +70,7 @@ const SignUp = () => {
 export async function getStaticProps({ locale }: IStaticProps) {
 	return {
 		props: {
-		...(await serverSideTranslations(locale, ['signup'])),
+		...(await serverSideTranslations(locale, ['common', 'login'])),
 		},
 	};
   }

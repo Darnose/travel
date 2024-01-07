@@ -5,8 +5,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 600px;
-  padding: 30px 35px;
+  width: 550px;
+  height: 300px;
+  margin: 15px;
   background: $blue;
   border-radius: 5px;
   opacity: 1;
@@ -34,6 +35,26 @@
     .bold {
       font-weight: 700;
       text-align: center;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .weather {
+    margin: 10px 0;
+    justify-content: space-evenly;
+    .top {
+      height: 50%;
+      margin-top: 0;
+      flex-direction: column;
+    }
+    .bottom {
+      margin-top: 0;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      .wrap {
+        margin: 10px;
+      }
     }
   }
 }

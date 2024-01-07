@@ -29,7 +29,7 @@ const Home = () => {
   const urlWeather = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiWeather}`;
   const urlCountry = `https://restcountries.com/v3/alpha/${countryCode}`;
   const urlCurrency = `https://openexchangerates.org/api/latest.json?app_id=${apiCurrency}&symbols=${currentCurrency}`;
-  const linkAttr = '/v1/location/nearby_search';
+  const linkAttr = '/api/v1/location/nearby_search';
   const urlAttract = `${linkAttr}?latLong=${latLong}&key=${apiAttractions}&category=attractions&radius=30&language=en`;
   
   const searchLocation: IHome["searchLocation"] = (e) => {
@@ -71,7 +71,7 @@ const Home = () => {
   }, [urlCurrency])
 
   useEffect(() => {
-    axios.get(`/api/${urlAttract}`)
+    axios.get(urlAttract)
     .then((response)=> {
       setAttractions(response.data)
     })

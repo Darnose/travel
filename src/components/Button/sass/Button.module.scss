@@ -8,9 +8,9 @@
         background: $blue;
         border-radius: 5px;
         border: 2px solid transparent;
+        margin: 10px;
         font-size: 16px;
         font-weight: 700;
-        margin-bottom: 10px;
         color: $ultra-white;
         transition: all 0.2s ease;
         cursor: pointer;
@@ -24,11 +24,11 @@
     .forget__btn {
         width: 193px;
         height: 46px;
-        margin-left: 27px;
         background: transparent;
         border-radius: 5px;
         border: 1px solid $grey;
         text-decoration: none;
+        margin: 10px;
         font-size: 16px;
         font-weight: 700;
         transition: all 0.2s ease;
@@ -43,12 +43,6 @@
             width: 100%;
             height: 100%;
         }
-        // &:hover {
-        //     background: #525151;
-        //     color: #fff;
-        //     transition: all 0.2s ease;
-        //     border: 1px solid #525151;
-        // }
     }
     .eye {
         position: absolute;
@@ -63,8 +57,9 @@
     }
     .Xmark {
         position: absolute;
-        left: 460px;
-        bottom: 24px;
+        right: 73px;
+        top: 50%;
+        transform: translate(-50%, -50%);
         background: transparent;
         border: none;
         width: 14px;
@@ -74,9 +69,11 @@
     }
     .search {
         background: transparent;
-        border: none;
-        width: 66px;
-        height: 66px;
+        width: 70px;
+        height: 70px;
+        border-radius: 5px;
+        margin-left: -2px;
+        border: 2px solid $dark;
         cursor: pointer;
         svg {
             width: 25px;
@@ -90,8 +87,9 @@
         width: 80px;
         height: 80px;
         border-radius: 50%;
-        border: transparent;
+        border: 1px solid $ultra-white;
         background: $blue;
+        z-index: 999;
         a {
             display: flex;
             align-items: center;
@@ -103,5 +101,25 @@
             color: $ultra-white;
         }
         
+    }
+}
+
+@media (max-width: 575px) {
+    .button {
+        .search {
+            width: 60px;
+            height: 60px;
+        }
+        .Xmark {
+            right: 63px;
+        }
+        .donate {
+            width: 60px;
+            height: 60px;
+            a {
+                width: 50px;
+                font-size: 14px;
+            }
+        }
     }
 }
