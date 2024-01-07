@@ -34,14 +34,12 @@ const Search = ({ searchLocation, location, deleteLocation, locationHandler,}: I
         />
         )
       }
-      <div className={styles.search_btn}>
-        <Button
-          type='submit'
-          onClick={e => searchLocation(e)}
-          text={<FontAwesomeIcon icon={faMagnifyingGlass} />}
-          styleType="search"
-        />
-      </div>
+      <Button
+        type='submit'
+        onClick={e => searchLocation(e)}
+        text={<FontAwesomeIcon icon={faMagnifyingGlass} />}
+        styleType="search"
+      />
       <ToastContainer
         position="top-center"
         autoClose={2000}

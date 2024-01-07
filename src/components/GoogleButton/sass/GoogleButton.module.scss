@@ -27,3 +27,17 @@
     height: 30px;
   }
 }
+
+@media (max-width: 575px) {
+  .google {
+   width: 220px;
+   height: 50px;
+   font-size: 14px;
+   .icon {
+    left: 13px;
+    top: 10px;
+    width: 25px;
+    height: 25px;
+   }
+  }
+}

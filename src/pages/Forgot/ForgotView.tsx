@@ -6,8 +6,14 @@ import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 
 import '../../i18n/i18n'
+import IForgot from './interfaces/IForgot';
 
-const ForgotView = () => {
+const ForgotView = ({
+	emailHandler,
+	email,
+	resetEmail,
+}: IForgot) => {
+  
     const { t } = useTranslation('login');
 
   return (
@@ -20,6 +26,8 @@ const ForgotView = () => {
         </Title>
         <Input
           title={t('inputTitle1') ?? ''}
+          onChange={e => emailHandler(e)}
+          value={email.trim()}
           type='email'
           placeholder='Enter email...'
           name='email'
@@ -29,6 +37,7 @@ const ForgotView = () => {
             type='submit'
             text={t('sendEmail')}
             styleType="authorization__btn"
+            onClick={e => resetEmail(e)}
           />
         </div>
       </form>

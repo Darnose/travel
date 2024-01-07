@@ -1,6 +1,13 @@
 .map {
   display: flex;
   justify-content: center;
-  width: 600px;
-  height: 350px;
+  width: 550px;
+  height: 300px;
+  margin: 15px;
+}
+
+@media (max-width: 575px) {
+  .map {
+    margin: 10px 0;
+  }
 }

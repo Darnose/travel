@@ -3,6 +3,7 @@
 .input__wrap {
     display: flex;
     flex-direction: column;
+    width: 100%;
     .input__title {
         margin-top: 37px;
         margin-bottom: 8px;
@@ -14,6 +15,7 @@
         width: 487px;
         height: 70px;
         border-radius: 5px;
+        position: relative;
         font-size: 16px;
         line-height: 19px;
         border: 2px solid $dark;
@@ -27,3 +29,14 @@
     }
 }
 
+@media (max-width: 575px) {
+    .input__wrap {
+        .input__title {
+            margin-top: 30px;
+        }
+        input {
+            width: 100%;
+            height: 60px;
+        }
+    }
+}

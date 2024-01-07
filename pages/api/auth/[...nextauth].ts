@@ -1,19 +1,11 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import NextAuth from "next-auth/next";
+import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { auth } from "../../../src/Firebase/firebase";
 import Credentials from "next-auth/providers/credentials";
-import { FirestoreAdapter } from "@auth/firebase-adapter";
-import { cert } from "firebase-admin/app";
+import type { AuthOptions } from "next-auth"; 
 
-export default NextAuth({
-  // adapter: FirestoreAdapter({
-  //   credential: cert({
-  //     projectId: process.env.FIREBASE_PROJECT_ID,
-  //     clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-  //     privateKey: process.env.FIREBASE_PRIVATE_KEY!.replace(/\\n/g, '\n'),
-  //   })
-  // }),
+export const authOptions : AuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -36,4 +28,5 @@ export default NextAuth({
   pages: {
     signIn: '/login'
   }
-})
+}
+export default NextAuth(authOptions);

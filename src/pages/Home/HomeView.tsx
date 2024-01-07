@@ -9,13 +9,13 @@ import Currency from '../../components/Currency/Currency';
 import Attractions from '../../components/Attractions/Attractions';
 import Button from '../../components/Button/Button';
 import Link from 'next/dist/client/link';
+import { signOut } from 'next-auth/react';
 
 import 'react-toastify/dist/ReactToastify.css';
 import 'mapbox-gl/dist/mapbox-gl.css'
 
 import '../../i18n/i18n'
 import IHome from './interfaces/IHome';
-import Navigation from '../../components/Navigation/Navigation';
 
 
 const HomeView = ({
@@ -34,7 +34,11 @@ const HomeView = ({
     <Layout
       styleType="container_top"
     >
-      <Navigation/>
+      <Button
+          type='button'
+          text={'Sign Out'}
+          onClick={() => signOut()}
+        />
       <Search
         searchLocation={searchLocation}
         location={location}

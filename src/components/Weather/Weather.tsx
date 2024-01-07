@@ -25,15 +25,15 @@ const Weather = ({data}: IWeather) => {
         </div>
       </div>
       <div className={styles.bottom}>
-        <div className={styles.feels}>
+        <div className={styles.wrap}>
         {data.main ? <p className={styles.bold}>{data.main.feels_like.toFixed()}°C</p> : null}
           <p>{t('Feels')}</p>
         </div>
-        <div className={styles.humidity}>
+        <div className={styles.wrap}>
         {data.main ? <p className={styles.bold}>{data.main.humidity.toFixed()}%</p> : null}
           <p>{t('Humidity')}</p>
         </div>
-        <div className={styles.wind}>
+        <div className={styles.wrap}>
         {data.main ? <p className={styles.bold}>{data.wind.speed.toFixed()}m/s</p> : null}
           <p>{t('Wind')}</p>
         </div>
